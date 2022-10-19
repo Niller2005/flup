@@ -3,6 +3,10 @@
 	import '../app.css';
 </script>
 
+<svelte:head>
+	<title>Flupbot</title>
+</svelte:head>
+
 <div class="p-4 h-screen">
 	<Nav />
 	<slot />
