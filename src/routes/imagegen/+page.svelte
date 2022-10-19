@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { stringify } from 'postcss';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
-	console.log(data.predictions);
 </script>
 
 <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 mt-5 gap-4">
