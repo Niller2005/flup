@@ -6,17 +6,19 @@
 </script>
 
 <main class="flex flex-col mt-5 gap-5">
-	<div class="alert shadow-lg bg-neutral">
-		<div>
+	<div
+		class="flex flex-wrap m-auto place-content-center gap-4 max-w-screen-lg place-items-center"
+		class:md:grid-cols-2={data.prediction.output.length > 1}
+	>
+		<div class="alert shadow-lg bg-neutral max-w-lg md:max-w-5xl">
 			<span>{data.prediction.input?.prompt}</span>
 		</div>
-	</div>
-	<div
-		class="grid grid-cols-1  m-auto gap-4  "
-		class:lg:grid-cols-2={data.prediction.output.length > 1}
-	>
 		{#each data.prediction.output as image}
-			<img src={image} alt={data.prediction.input?.prompt} class="rounded-lg" />
+			<img
+				src={image}
+				alt={data.prediction.input?.prompt}
+				class="rounded-lg grow max-w-lg w-full md:w-5/12"
+			/>
 		{/each}
 	</div>
 </main>
