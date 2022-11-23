@@ -11,12 +11,12 @@
 		class:md:grid-cols-2={data.prediction.output.length > 1}
 	>
 		<div class="alert shadow-lg bg-neutral max-w-lg md:max-w-5xl">
-			<span>{data.prediction.input?.prompt}</span>
+			<span>{data.prediction.input?.prompt.replace('mdjrny-v4 style', '')}</span>
 		</div>
 		{#each data.prediction.output as image}
 			<img
 				src={image}
-				alt={data.prediction.input?.prompt}
+				alt={data.prediction.input?.prompt.replace('mdjrny-v4 style', '')}
 				class="rounded-lg grow max-w-lg w-full md:w-5/12"
 			/>
 		{/each}

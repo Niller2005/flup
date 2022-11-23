@@ -13,17 +13,24 @@
 		{#if prediction.status === 'succeeded' && prediction.source === 'api'}
 			<a href={`/imagegen/${prediction.id}`} class="card bg-neutral shadow-xl text-neutral-content">
 				{#if prediction.output.length === 1}
-					<img src={prediction.output?.at(0)} alt={prediction.input?.prompt} />
+					<img
+						src={prediction.output?.at(0)}
+						alt={prediction.input?.prompt.replace('mdjrny-v4 style', '')}
+					/>
 				{:else}
 					<figure class="flex flex-wrap">
 						{#each prediction.output as output}
 							<!-- content here -->
-							<img src={output} alt={prediction.input?.prompt} class=" w-1/2" />
+							<img
+								src={output}
+								alt={prediction.input?.prompt.replace('mdjrny-v4 style', '')}
+								class=" w-1/2"
+							/>
 						{/each}
 					</figure>
 				{/if}
 				<div class="card-body">
-					<p class=" text-lg">{prediction.input?.prompt}</p>
+					<p class=" text-lg">{prediction.input?.prompt.replace('mdjrny-v4 style', '')}</p>
 				</div>
 			</a>
 		{/if}
