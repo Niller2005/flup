@@ -21,7 +21,7 @@
 			e.target.scrollingElement.scrollTop;
 
 		if (offset <= 1000) {
-			if (!isLoadMore) {
+			if (!isLoadMore && nextPage !== '') {
 				loadMore();
 			}
 			isLoadMore = true;
@@ -66,5 +66,7 @@
 			{/if}
 		{/each}
 	</main>
-	<button class="btn" on:click={loadMore}>Load more</button>
+	{#if nextPage !== ''}
+		<button class="btn" on:click={loadMore}>Load more</button>
+	{/if}
 </div>
