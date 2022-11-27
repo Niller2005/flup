@@ -5,6 +5,7 @@
 
 	let nextPage = data.predictions.next || '';
 	let predictions = data.predictions.results;
+	let isLoadMore = false;
 
 	const loadMore = async () => {
 		const res = await fetch(`/api/predictions?cursor=${nextPage.split('=')[1]}`);
@@ -13,21 +14,28 @@
 		predictions = [...predictions, ...data.results];
 	};
 
-	let scroll: number;
-	let height: number;
-	let scrollHeight: number;
-	$: {
-		// console.log(height - scrollHeight - scroll);
-		// if (height - scroll < 2000 && nextPage !== '') loadMore();
-	}
+	const onScroll = (e) => {
+		const offset =
+			e.target.scrollingElement.scrollHeight -
+			e.target.scrollingElement.clientHeight -
+			e.target.scrollingElement.scrollTop;
+
+		if (offset <= 1000) {
+			if (!isLoadMore) {
+				loadMore();
+			}
+			isLoadMore = true;
+		} else {
+			isLoadMore = false;
+		}
+	};
 </script>
 
-<svelte:window bind:scrollY={scroll} bind:innerHeight={scrollHeight} />
+<svelte:window on:scroll={onScroll} />
 
 <!-- <pre>{JSON.stringify(predictions, null, 2)}</pre> -->
 <div class="flex flex-col gap-2">
 	<main
-		bind:offsetHeight={height}
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 mt-5 gap-4"
 	>
 		{#each predictions as prediction}
