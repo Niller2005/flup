@@ -17,7 +17,7 @@
 	let scroll: number;
 	let height: number;
 	$: {
-		if (height - scroll < 2000) loadMore();
+		if (height - scroll < 2000 && nextPage !== '') loadMore();
 	}
 </script>
 
