@@ -13,8 +13,6 @@ export const load: PageServerLoad = async () => {
 
 	const predictions: Predictions = await response.json();
 
-	console.log(predictions);
-
 	if (predictions) return { predictions };
 
 	throw error(404, 'Not found');
