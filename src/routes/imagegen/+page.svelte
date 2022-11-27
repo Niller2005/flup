@@ -10,6 +10,7 @@
 	const loadMore = async () => {
 		const res = await fetch(`/api/predictions?cursor=${nextPage.split('=')[1]}`);
 		const data = await res.json();
+
 		nextPage = data.next;
 		predictions = [...predictions, ...data.results];
 	};
@@ -21,7 +22,7 @@
 			e.target.scrollingElement.scrollTop;
 
 		if (offset <= 1000) {
-			if (!isLoadMore && nextPage !== '') {
+			if (!isLoadMore && nextPage) {
 				loadMore();
 			}
 			isLoadMore = true;
@@ -66,7 +67,7 @@
 			{/if}
 		{/each}
 	</main>
-	{#if nextPage !== ''}
+	{#if nextPage}
 		<button class="btn" on:click={loadMore}>Load more</button>
 	{/if}
 </div>
