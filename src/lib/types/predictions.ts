@@ -26,7 +26,8 @@ export interface Urls {
 export interface Input {
 	width: number;
 	height: number;
-	prompt: string;
+	prompt?: string;
+	positive_prompt?: string;
 	init_image: string;
 	num_outputs: string;
 	guidance_scale: number;
