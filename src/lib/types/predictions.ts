@@ -33,6 +33,7 @@ export interface Input {
 	guidance_scale: number;
 	prompt_strength: number;
 	num_inference_steps: number;
+	max_train_steps?: number;
 }
 
 export interface Metrics {
