@@ -40,7 +40,7 @@
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 mt-5 gap-4"
 	>
 		{#each predictions as prediction}
-			{#if prediction.status === 'succeeded' && prediction.source === 'api' && prediction.id !== 'jh7jfcimeff5no5jatuv4zrwja'}
+			{#if prediction.status === 'succeeded' && prediction.source === 'api' && prediction.input?.max_train_steps !== 2000}
 				<a
 					href={`/imagegen/${prediction.id}`}
 					class="card bg-neutral shadow-xl text-neutral-content"
