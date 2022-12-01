@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Nav from '../lib/components/Nav.svelte';
 	import '../app.css';
+	import { inject } from '@vercel/analytics';
+	inject();
 </script>
 
 <svelte:head>
