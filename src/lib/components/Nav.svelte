@@ -4,6 +4,7 @@
 	</div>
 	<div class="flex-none">
 		<ul class="menu menu-horizontal p-0">
+			<li><a href="/music">Music</a></li>
 			<li><a href="/imagegen">Generated Images</a></li>
 		</ul>
 	</div>
