@@ -12,6 +12,8 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@iconify/icons-heroicons": "1.2.7",
+		"@iconify/svelte": "3.0.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
