@@ -1,14 +1,15 @@
 <script lang="ts">
 	import Nav from '../lib/components/Nav.svelte';
 	import '../app.css';
-	const pages: PageLink[] = [
-		{ title: 'Music', href: '/music' },
-		{ title: 'Generated images', href: '/imagegen' }
-	];
 	import type { PageLink } from '$lib/types/pagelink';
 	import { browser } from '$app/environment';
 	import { webVitals } from '$lib/vitals';
 	import { page } from '$app/stores';
+
+	const pages: PageLink[] = [
+		{ title: 'Music', href: '/music' },
+		{ title: 'Generated images', href: '/imagegen' }
+	];
 
 	let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
 
