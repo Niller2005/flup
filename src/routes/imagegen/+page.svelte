@@ -7,6 +7,37 @@
 	let predictions = data.predictions.results;
 	let isLoadMore = false;
 
+	const nsfwWords = [
+		'ass',
+		'breast',
+		'penis',
+		'busty',
+		'lingerie',
+		'topless',
+		'bikini',
+		'trap',
+		'femboy',
+		'pussy',
+		'butt',
+		'dildo',
+		'anal',
+		'sex',
+		'futa',
+		'cock',
+		'dick',
+		'nude',
+		'bra',
+		'naked',
+		'nipples'
+	];
+
+	const getInput = (input) => {
+		if (input.positive_prompt) {
+			return input.positive_prompt;
+		} else {
+			return input.prompt?.replace('mdjrny-v4 style', '');
+		}
+	};
 	const loadMore = async () => {
 		const res = await fetch(`/api/predictions?cursor=${nextPage.split('=')[1]}`);
 		const data = await res.json();
@@ -46,22 +77,25 @@
 					class="card bg-neutral shadow-xl text-neutral-content"
 				>
 					{#if prediction.output.length === 1}
-						<img src={prediction.output?.at(0)} />
+						<img
+							class:blur-2xl={nsfwWords.some((nw) => getInput(prediction.input).includes(nw))}
+							src={prediction.output?.at(0)}
+							alt="AI Generated"
+						/>
 					{:else}
-						<figure class="flex flex-wrap">
+						<figure
+							class="flex flex-wrap"
+							class:blur-2xl={nsfwWords.some((nw) => getInput(prediction.input).includes(nw))}
+						>
 							{#each prediction.output as output}
 								<!-- content here -->
-								<img src={output} class=" w-1/2" />
+								<img src={output} class=" w-1/2" alt="AI Generated" />
 							{/each}
 						</figure>
 					{/if}
 					<div class="card-body">
-						{#if prediction.input?.positive_prompt}
-							<!-- content here -->
-							<p class=" text-lg">{prediction.input?.positive_prompt}</p>
-						{:else}
-							<p class=" text-lg">{prediction.input?.prompt?.replace('mdjrny-v4 style', '')}</p>
-						{/if}
+						<!-- content here -->
+						<p class=" text-lg">{getInput(prediction.input)}</p>
 					</div>
 				</a>
 			{/if}
