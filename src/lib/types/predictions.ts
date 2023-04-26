@@ -26,12 +26,14 @@ export interface Urls {
 export interface Input {
 	width: number;
 	height: number;
-	prompt: string;
+	prompt?: string;
+	positive_prompt?: string;
 	init_image: string;
 	num_outputs: string;
 	guidance_scale: number;
 	prompt_strength: number;
 	num_inference_steps: number;
+	max_train_steps?: number;
 }
 
 export interface Metrics {
