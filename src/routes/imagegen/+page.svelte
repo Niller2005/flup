@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Input } from '$lib/types/predictions';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
@@ -31,11 +32,11 @@
 		'nipples'
 	];
 
-	const getInput = (input) => {
-		if (input.positive_prompt) {
+	const getInput = (input?: Input) => {
+		if (input?.positive_prompt) {
 			return input.positive_prompt;
 		} else {
-			return input.prompt?.replace('mdjrny-v4 style', '');
+			return input?.prompt?.replace('mdjrny-v4 style', '');
 		}
 	};
 	const loadMore = async () => {
@@ -78,14 +79,18 @@
 				>
 					{#if prediction.output.length === 1}
 						<img
-							class:blur-2xl={nsfwWords.some((nw) => getInput(prediction.input).includes(nw))}
+							class:blur-2xl={nsfwWords.some((nw) =>
+								getInput(prediction.input)?.toLowerCase().includes(nw)
+							)}
 							src={prediction.output?.at(0)}
 							alt="AI Generated"
 						/>
 					{:else}
 						<figure
 							class="flex flex-wrap"
-							class:blur-2xl={nsfwWords.some((nw) => getInput(prediction.input).includes(nw))}
+							class:blur-2xl={nsfwWords.some((nw) =>
+								getInput(prediction.input)?.toLowerCase().includes(nw)
+							)}
 						>
 							{#each prediction.output as output}
 								<!-- content here -->
