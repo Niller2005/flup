@@ -20,6 +20,8 @@
 		'femboy',
 		'pussy',
 		'butt',
+		'busty',
+		'bussy',
 		'dildo',
 		'anal',
 		'sex',
