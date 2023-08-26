@@ -7,6 +7,7 @@
 	let nextPage = data.predictions.next || '';
 	let predictions = data.predictions.results;
 	let isLoadMore = false;
+	let blurEnabled = true;
 
 	const nsfwWords = [
 		'ass',
@@ -92,7 +93,7 @@
 							class="flex flex-wrap"
 							class:blur-2xl={nsfwWords.some((nw) =>
 								getInput(prediction.input)?.toLowerCase().includes(nw)
-							)}
+							) && blurEnabled}
 						>
 							{#each prediction.output as output}
 								<!-- content here -->
@@ -112,3 +113,14 @@
 		<button class="btn" on:click={loadMore}>Load more</button>
 	{/if}
 </div>
+<button
+	class="fixed rounded-full bg-primary w-20 h-20 p-4 bottom-4 right-8"
+	on:click={() => (blurEnabled = !blurEnabled)}
+>
+	{#if blurEnabled}
+		<img src="//cdn.7tv.app/emote/6346e1b78cb0dce8e422b05a/4x.webp" />
+	{:else}
+		<img src="//cdn.betterttv.net/emote/5fa99424eca18f6455c2bca5/3x" />
+		<!-- else content here -->
+	{/if}
+</button>
