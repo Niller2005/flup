@@ -15,8 +15,8 @@
 		"@iconify/icons-heroicons": "1.2.7",
 		"@iconify/svelte": "3.0.1",
 		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/adapter-vercel": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-vercel": "3.0.3",
+		"@sveltejs/kit": "1.25.0",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"autoprefixer": "10.4.12",
@@ -33,10 +33,14 @@
 		"tailwindcss": "3.1.8",
 		"tslib": "^2.3.1",
 		"typescript": "^4.7.4",
+		"video.js": "8.5.2",
 		"vite": "^4.0.0"
 	},
 	"type": "module",
 	"dependencies": {
+		"@videojs/http-streaming": "3.5.3",
+		"@vime/core": "5.4.1",
+		"@vime/svelte": "5.4.1",
 		"node-fetch": "3.2.10",
 		"replicate-js": "github:nicholascelestin/replicate-js",
 		"web-vitals": "^3.1.0"
