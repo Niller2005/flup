@@ -5,4 +5,5 @@
 		alt=""
 	/>
 	<span class="text-5xl">Alo bois</span>
+	<span class="text-xs">Fatty was here</span>
 </main>
