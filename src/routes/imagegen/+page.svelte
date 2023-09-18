@@ -85,7 +85,7 @@
 							class:blur-2xl={nsfwWords.some((nw) =>
 								getInput(prediction.input)?.toLowerCase().includes(nw)
 							)}
-							src={prediction.output?.at(0)}
+							src={`/_vercel/image?url=${encodeURIComponent(prediction.output[0])}&w=500&q=75`}
 							alt="AI Generated"
 						/>
 					{:else}
@@ -97,7 +97,11 @@
 						>
 							{#each prediction.output as output}
 								<!-- content here -->
-								<img src={output} class=" w-1/2" alt="AI Generated" />
+								<img
+									src={`/_vercel/image?url=${encodeURIComponent(output)}&w=150&q=75`}
+									class=" w-1/2"
+									alt="AI Generated"
+								/>
 							{/each}
 						</figure>
 					{/if}
