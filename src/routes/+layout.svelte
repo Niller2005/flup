@@ -8,7 +8,10 @@
 
 	const pages: PageLink[] = [
 		{ title: 'Music', href: '/music' },
-		{ title: 'Generated images', href: '/imagegen' }
+		{ title: 'Generated images', href: '/imagegen' },
+		{ title: 'Fatty page', href: '/fatty' },
+		{ title: 'Kick', href: '/kick' },
+		{ title: 'Project List', href: '/projectlist' }
 	];
 
 	let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
