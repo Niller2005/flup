@@ -9,7 +9,7 @@
 			: (data.channelInfo as unknown as KickChannelInfo);
 </script>
 
-<main class="flex gap-4 items-center justify-center h-full">
+<!-- <main class="flex gap-4 items-center justify-center h-full">
 	<div class="avatar">
 		<div class="w-24 rounded">
 			<img
@@ -26,10 +26,13 @@
 				<a href={`https://kick.com/${parsedData.slug}`} class="link">Kick</a>
 				<a href={`${parsedData.playback_url}`} class="link">Direct link (For VLC/MPV)</a>
 			</div>
-			<!-- content here -->
 		{:else}
 			<span class="text-error">OFFLINE</span>
-			<!-- else content here -->
 		{/if}
 	</div>
-</main>
+</main> -->
+
+{@html parsedData}
+<pre>
+	{JSON.stringify(parsedData, null, 2)}
+</pre>

@@ -1,12 +1,17 @@
 import type { PageLoad } from './$types';
-import type { KickChannelInfo } from './channel.type';
 
-const getChannelInfo = async (channel: string) => {
-	const res = await fetch(`https://kick.com/api/v2/channels/${channel}`);
+// const getChannelInfo = async (channel: string) => {
+// 	const res = await fetch(`https://kick.com/api/v2/channels/${channel}`);
+// 	const data = await res.text();
+// 	return data;
+// };
+
+export const load: PageLoad = async ({ params, fetch }) => {
+	const res = await fetch(`/api/v2/channels/${params.channel}`);
 	const data = await res.text();
-	return data;
-};
+	console.log(data);
 
-export const load: PageLoad = ({ params }) => ({
-	channelInfo: getChannelInfo(params.channel)
-});
+	return {
+		channelInfo: data
+	};
+};
