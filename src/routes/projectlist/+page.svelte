@@ -6,4 +6,7 @@
 	/>
 	<span class="text-xl">Work in progress</span>
 	<span class="text-xl">List here. Checkbox style. Add Item. Saves in Flup-database.</span>
+	<span class="text-xl">Trakt Page</span>
+	<span class="text-xl">Food Page, Cooking, Ingredients, Reactive UI, Automated Suggestions, Automated Shipping</span>
+	<span class="text-xl">https://trakt.tv/shows/the-continental-from-the-world-of-john-wick</span>
 </main>
