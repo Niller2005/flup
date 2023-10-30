@@ -27,6 +27,7 @@
 	<div class="drawer-content flex flex-col p-4">
 		<Nav {pages} />
 		<slot />
+		<pre>{JSON.stringify($page.data.session?.user, null, 2)}</pre>
 	</div>
 	<div class="drawer-side">
 		<label for="nav-drawer" class="drawer-overlay" />
