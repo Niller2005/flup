@@ -4,8 +4,6 @@ import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import type { Config } from '@sveltejs/adapter-vercel';
 
-export const prerender = true;
-
 export const config: Config = {
 	runtime: 'nodejs20.x'
 };
