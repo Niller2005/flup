@@ -3,13 +3,10 @@
 	import type { KickChannelInfo } from './channel.type';
 	export let data: PageData;
 
-	$: parsedData =
-		data.channelInfo.charAt(0) === '{'
-			? (JSON.parse(data.channelInfo) as KickChannelInfo)
-			: (data.channelInfo as unknown as KickChannelInfo);
+	$: parsedData = data.channelInfo;
 </script>
 
-<!-- <main class="flex gap-4 items-center justify-center h-full">
+<main class="flex gap-4 items-center justify-center h-full">
 	<div class="avatar">
 		<div class="w-24 rounded">
 			<img
@@ -30,9 +27,8 @@
 			<span class="text-error">OFFLINE</span>
 		{/if}
 	</div>
-</main> -->
+</main>
 
-{@html parsedData}
-<pre>
+<!-- <pre>
 	{JSON.stringify(parsedData, null, 2)}
-</pre>
+</pre> -->
