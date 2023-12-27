@@ -12,7 +12,7 @@ const getChannelInfo = async (channel?: string) => {
 	const data = await page.evaluate(() => document.body.innerText);
 	await browser.close();
 
-	return await data;
+	return data;
 };
 
 export const GET: RequestHandler = async ({ url, params }) => {
