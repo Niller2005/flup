@@ -2,6 +2,13 @@ import { BROWSERLESS_TOKEN } from '$env/static/private';
 import { json, text, type RequestHandler } from '@sveltejs/kit';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import type { Config } from '@sveltejs/adapter-vercel';
+
+export const prerender = true;
+
+export const config: Config = {
+	runtime: 'nodejs20.x'
+};
 
 const getChannelInfo = async (channel?: string) => {
 	const browser = await puppeteer.use(StealthPlugin()).connect({
