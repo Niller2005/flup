@@ -47,6 +47,7 @@
 		"@vime/svelte": "5.4.1",
 		"bufferutil": "4.0.8",
 		"encoding": "0.1.13",
+		"hls.js": "^1.4.14",
 		"node-fetch": "3.2.10",
 		"replicate-js": "github:nicholascelestin/replicate-js",
 		"source-map-support": "0.5.21",
