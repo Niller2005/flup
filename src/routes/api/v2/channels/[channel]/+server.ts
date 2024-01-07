@@ -1,23 +1,17 @@
-import { BROWSERLESS_TOKEN } from '$env/static/private';
-import { json, text, type RequestHandler } from '@sveltejs/kit';
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import type { Config } from '@sveltejs/adapter-vercel';
-
-export const config: Config = {
-	runtime: 'nodejs20.x'
-};
+import { text, type RequestHandler } from '@sveltejs/kit';
 
 const getChannelInfo = async (channel?: string) => {
-	const browser = await puppeteer.use(StealthPlugin()).connect({
-		browserWSEndpoint: `wss://chrome.browserless.io?token=${BROWSERLESS_TOKEN}`
-	});
-	const page = await browser.newPage();
-	await page.goto(`https://kick.com/api/v2/channels/${channel}`);
-	const data = await page.evaluate(() => document.body.innerText);
-	await browser.close();
+	const url = 'https://flaresolverr.niller.xyz/v1';
+	const options = {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: `{"cmd":"request.get","url":"https://kick.com/api/v2/channels/${channel}"}`
+	};
 
-	return data;
+	const response = await fetch(url, options);
+	const data = await response.json();
+
+	return data.solution.response.replace(/<html>|<head>|<body>|<\/html>|<\/head>|<\/body>/gi, '');
 };
 
 export const GET: RequestHandler = async ({ url, params }) => {
