@@ -41,6 +41,7 @@
 	"dependencies": {
 		"@auth/core": "0.18.0",
 		"@auth/sveltekit": "0.3.11",
+		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"@videojs/http-streaming": "3.5.3",
 		"@vime/core": "5.4.1",
 		"@vime/svelte": "5.4.1",
