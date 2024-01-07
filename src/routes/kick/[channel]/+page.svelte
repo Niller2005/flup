@@ -3,10 +3,7 @@
 	import type { KickChannelInfo } from './channel.type';
 	export let data: PageData;
 
-	$: parsedData =
-		data.channelInfo.charAt(0) === '{'
-			? (JSON.parse(data.channelInfo) as KickChannelInfo)
-			: (data.channelInfo as unknown as KickChannelInfo);
+	$: parsedData = data.channelInfo;
 </script>
 
 <main class="flex gap-4 items-center justify-center h-full">
@@ -26,10 +23,12 @@
 				<a href={`https://kick.com/${parsedData.slug}`} class="link">Kick</a>
 				<a href={`${parsedData.playback_url}`} class="link">Direct link (For VLC/MPV)</a>
 			</div>
-			<!-- content here -->
 		{:else}
 			<span class="text-error">OFFLINE</span>
-			<!-- else content here -->
 		{/if}
 	</div>
 </main>
+
+<!-- <pre>
+	{JSON.stringify(parsedData, null, 2)}
+</pre> -->
