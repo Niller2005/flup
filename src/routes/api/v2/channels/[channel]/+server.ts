@@ -1,19 +1,13 @@
-import { text, type RequestHandler } from '@sveltejs/kit';
+import { text, type RequestHandler, json } from '@sveltejs/kit';
 
 const getChannelInfo = async (channel?: string) => {
-	const url = 'https://flaresolverr.niller.xyz/v1';
-	const options = {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: `{"cmd":"request.get","url":"https://kick.com/api/v2/channels/${channel}"}`
-	};
+	const response = await fetch(`https://kick.com/api/v2/channels/${channel}`);
 
-	const response = await fetch(url, options);
-	const data = await response.json();
+	const data = await response.text();
 
-	return data.solution.response.replace(/<html>|<head>|<body>|<\/html>|<\/head>|<\/body>/gi, '');
+	return JSON.parse(data);
 };
 
 export const GET: RequestHandler = async ({ url, params }) => {
-	return text(await getChannelInfo(`${params.channel}`));
+	return json(await getChannelInfo(`${params.channel}`));
 };
