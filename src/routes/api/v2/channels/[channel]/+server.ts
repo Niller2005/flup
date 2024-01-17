@@ -9,7 +9,7 @@ const getChannelInfo = async (channel?: string) => {
 
 	const data = await response.text();
 
-	return JSON.parse(data);
+	return data;
 };
 
 export const GET: RequestHandler = async ({ url, params }) => {
