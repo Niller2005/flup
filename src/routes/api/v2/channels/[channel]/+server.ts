@@ -7,7 +7,7 @@ export const config: Config = {
 const getChannelInfo = async (channel?: string) => {
 	const response = await fetch(`https://kick.com/api/v2/channels/${channel}`);
 
-	const data = await response.text();
+	const data = await response;
 
 	return data;
 };
