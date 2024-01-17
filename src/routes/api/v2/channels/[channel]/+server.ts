@@ -1,4 +1,8 @@
-import { text, type RequestHandler, json } from '@sveltejs/kit';
+import { type RequestHandler, json, type Config } from '@sveltejs/kit';
+
+export const config: Config = {
+	runtime: 'edge'
+};
 
 const getChannelInfo = async (channel?: string) => {
 	const response = await fetch(`https://kick.com/api/v2/channels/${channel}`);
