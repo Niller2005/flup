@@ -9,9 +9,15 @@
 
 	let videoEl: HTMLMediaElement;
 
+	const config = {
+		enableWorker: true,
+		lowLatencyMode: true,
+		backBufferLength: 90
+	};
+
 	onMount(() => {
 		if (Hls.isSupported() && data.channelInfo.livestream) {
-			const hls = new Hls();
+			const hls = new Hls(config);
 
 			console.log(data.channelInfo);
 
@@ -22,6 +28,7 @@
 			hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
 				console.log('manifest loaded, found ' + data.levels.length + ' quality level');
 			});
+
 			hls.loadSource(data.channelInfo.playback_url);
 			// bind them together
 			hls.attachMedia(videoEl);
@@ -53,9 +60,7 @@
 		</div>
 	</div>
 	{#if parsedData.livestream}
-		<video bind:this={videoEl} controls autoplay class="w-full aspect-video">
-			<track kind="captions" />
-		</video>
+		<video crossorigin="*" bind:this={videoEl} controls autoplay class="w-full aspect-video" />
 	{/if}
 </main>
 

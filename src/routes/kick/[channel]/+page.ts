@@ -9,6 +9,7 @@ import type { KickChannelInfo } from './channel.type';
 
 export const load: PageLoad = async ({ params, fetch }) => {
 	const res = await fetch(`/api/v2/channels/${params.channel}`);
+	res.headers.append('Access-Control-Allow-Origin', '*');
 	const data: KickChannelInfo = await res.json();
 
 	return {

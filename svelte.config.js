@@ -10,7 +10,12 @@ const config = {
 	}),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			// see below for options that can be set here
+		}),
+		csrf: {
+			checkOrigin: false
+		}
 	}
 };
 
