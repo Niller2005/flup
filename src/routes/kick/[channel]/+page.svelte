@@ -52,7 +52,11 @@
 			{/if}
 		</div>
 	</div>
-	<video bind:this={videoEl} controls autoplay class="w-full aspect-video" />
+	{#if parsedData.livestream}
+		<video bind:this={videoEl} controls autoplay class="w-full aspect-video">
+			<track kind="captions" />
+		</video>
+	{/if}
 </main>
 
 <!-- <pre>
