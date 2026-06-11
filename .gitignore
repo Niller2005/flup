@@ -23,3 +23,10 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 # SQLite
 *.db
+
+# PocketBase
+pb_data/
+pb_data_dev/
+/pocketbase
+/pocketbase.exe
+/pocketbase.sh
